@@ -1,5 +1,5 @@
 # author: roczhang
-# file: dataset_load.py
+# file: bp_test.py
 # time: 2021/04/16
 import os
 import torch
@@ -10,6 +10,7 @@ from torch.utils.data import DataLoader
 import torch.nn.functional as F
 import torch.optim as optim
 import torchvision.transforms as transforms
+import numpy as np
 
 transform = transforms.Compose(
     [transforms.ToTensor()])
@@ -34,16 +35,15 @@ class CustomDataset(Dataset):
         return samples
 
 
-train_data = CustomDataset("/data/file/classification_data/SJ15/trainData.mat", "/data/file/classification_data/SJ15/trainlabel.mat",
-                           transforms=transforms)
-test_data = CustomDataset("/data/file/classification_data/SJ15/testData.mat", "/data/file/classification_data/SJ15/testlabel.mat",
-                          transforms=transforms)
+train_data = CustomDataset("/data/file/classification_data/SJ15/trainData.mat", "/data/file/classification_data/SJ15/trainlabel.mat")
+test_data = CustomDataset("/data/file/classification_data/SJ15/testData.mat", "/data/file/classification_data/SJ15/testlabel.mat")
 train_dataloader = DataLoader(train_data, batch_size=32)
 test_dataloader = DataLoader(test_data, batch_size=32)
 
 
 train_features, train_labels = next(iter(train_dataloader)).values()
-print(train_features.shape)
+
+print(train_features.dtype)
 print(train_labels.shape)
 
 # 定义网络
@@ -68,6 +68,7 @@ class Net(nn.Module):
         return x
 
 net = Net()
+net.double()
 
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
