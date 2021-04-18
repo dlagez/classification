@@ -1,15 +1,20 @@
 # author: roczhang
-# file: MLPClassifier_test.py
-# time: 2021/04/17
+# file: MLPClassifier_test2.py
+# time: 2021/04/18
 
 import scipy.io as scio
 import scipy
 from sklearn.neural_network import MLPClassifier
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
-
-clf = MLPClassifier(hidden_layer_sizes=10, random_state=1, max_iter=300)
+from sklearn.metrics import balanced_accuracy_score
+clf = MLPClassifier(hidden_layer_sizes=4, random_state=1, max_iter=50)
+# 0.8317307692307692 SJ15
+# 0.8934729064039408 SJ16
+# 0.8386243386243386 SJ17
+# 0.7947515212981744 SJ18
 year = 15
+
 
 while (year < 19):
     year_str = str(year)
@@ -22,6 +27,8 @@ while (year < 19):
 
     clf.fit(train_data, train_label)
     label_pred = clf.predict(test_data).reshape(-1, 1)
-    print(label_pred)
-    scipy.io.savemat("/data/file/classification_data/pre/MLP/SJ" + year_str + "/label_pred.mat", {'label_pred': label_pred})
+    # print(label_pred)
+    print(balanced_accuracy_score(label_pred, test_label))
+    scipy.io.savemat("/data/file/classification_data/pre/pr_MLP2/SJ" + year_str + "/label_pred.mat", {'label_pred': label_pred})
+
 

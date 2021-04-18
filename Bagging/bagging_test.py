@@ -6,9 +6,13 @@ import scipy
 from sklearn.metrics import balanced_accuracy_score
 from sklearn.ensemble import BaggingClassifier
 from sklearn.tree import DecisionTreeClassifier
-
-bc = BaggingClassifier(base_estimator=DecisionTreeClassifier(),
-                            random_state=0)
+from sklearn.metrics import balanced_accuracy_score
+bc = BaggingClassifier(n_estimators=1)
+# n_estimators=1
+# 0.8285714285714285
+# 0.8309859154929577
+# 0.8398644936824757
+# 0.8537330932540513
 year = 15
 while (year < 19):
     year_str = str(year)
@@ -22,6 +26,6 @@ while (year < 19):
 
     bc.fit(train_data, train_label)
     label_pred = bc.predict(test_data).reshape(-1, 1)
-    print(label_pred)
-
-    scipy.io.savemat("/data/file/classification_data/pre/bagging/SJ"+year_str+"/label_pred.mat", {'label_pred': label_pred})
+    # print(label_pred)
+    print(balanced_accuracy_score(label_pred, test_label))
+    scipy.io.savemat("/data/file/classification_data/pre/bagging2/SJ"+year_str+"/label_pred.mat", {'label_pred': label_pred})
