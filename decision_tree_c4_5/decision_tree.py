@@ -1,9 +1,7 @@
 # author: roczhang
 # file: decision_tree.py
 # time: 2021/04/16
-# author: roczhang
-# file: Naive_bayes_demo.py
-# time: 2021/04/16
+
 import scipy.io as scio
 import scipy
 
