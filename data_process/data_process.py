@@ -89,3 +89,5 @@ for year in range(2012, 2018):
     train_label.to_csv(os.path.join(data_root+str(year), 'train/train_label.csv'))
     test_data.to_csv(os.path.join(data_root+str(year), 'train/test_data.csv'))
     test_label.to_csv(os.path.join(data_root+str(year), 'train/test_label.csv'))
+
+
