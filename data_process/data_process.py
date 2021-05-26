@@ -2,19 +2,50 @@
 # date :   2021/5/25
 import pandas as pd
 import os
+import numpy as np
 # 将一个文件夹中多个xls文件按列合并，返回合并和的数据，DataFrame
+def get_type():
+    dict = {}
+    for i in range(200):
+        dict[i] = np.float
+    return dict
+
+a = get_type()
+
 def concat_xls(dir_name):
     dfs = []
+    i = 1
+    # dtype = get_type()
     for filename in os.listdir(dir_name):
         if os.path.splitext(filename)[1] == '.xls':
+            print("filename is ", str(filename))
             full_path = os.path.join(dir_name, filename)
-            df = pd.read_excel(full_path, header=None, index_col=0)
+            df = pd.read_excel(full_path, header=None, index_col=0, na_values=["NA"])
+            print(df.dtypes)
             dfs.append(df)
+            i = i + 1
+            print('now: '+ str(i))
+            print('------------------------------------------------')
+    print('sum: '+ str(i))
     result = pd.concat(dfs, axis=1)
     return result
 
-# data_2012 = concat_xls('/data/file/classification_data/2012-2019/data_A/2012')
-# data_2012.columns = [i for i in range(data_2012.shape[1])]
+def print_name(dir_name):
+    i = 0
+    for filename in os.listdir(dir_name):
+        if os.path.splitext(filename)[1] == '.xls':
+            i = i + 1
+            print(filename)
+    print(i)
+print_name('/data/file/classification_data/2012-2019/data_A/2012')
+
+
+data_2012 = concat_xls('/data/file/classification_data/2012-2019/data_A/2012')
+
+data_2012.columns = [i for i in range(data_2012.shape[1])]
+data1 = data_2012.apply(pd.to_numeric, errors='ignore')
+d = [data_2012.dtypes]
+d1 = [data1.dtypes]
 
 # 先把拼接起来的值存储起来
 for year in range(2012, 2018):
