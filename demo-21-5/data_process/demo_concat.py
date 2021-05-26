@@ -6,7 +6,6 @@ import os
 
 def concat_file(dir_root, begin, end):
     data_all = []
-    l
     for year in range(begin, end):
         data_name = os.path.join(dir_root+str(year), 'data_bq_drop.csv')
         data = pd.read_csv(data_name, index_col=0)
