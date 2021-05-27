@@ -40,14 +40,14 @@ def get_sumX(data_root, begin, end):
     # 返回训练数据、训练标签、测试数据、测试标签
     return trainX_norm, trainy_norm, testX_norm, testy_norm
 
-train_sumX_2016_norm, train_sumX_2016_label, test_sumy_2016_norm, test_sumy_2016_label = get_sumX('/data/file/classification_data/years/', 2012, 2017)
+train_sumX_2016_norm, train_sumy_2016_label, test_sumX_2016_norm, test_sumy_2016_label = get_sumX('/data/file/classification_data/years/', 2012, 2017)
 data_root = '/data/file/classification_data/years/sum_2016/'
 # scipy.io.savemat(os.path.join(data_root, 'X_norm_2016.mat'), {'X': sumX_2016})
 
 # 存储归一化的数据
 scipy.io.savemat(os.path.join(data_root, 'train_sumX_2016_norm.mat'), {'X': train_sumX_2016_norm})
-scipy.io.savemat(os.path.join(data_root, 'train_sumX_2016_label.mat'), {'y': train_sumX_2016_label})
-scipy.io.savemat(os.path.join(data_root, 'test_sumy_2016_norm.mat'), {'y': test_sumy_2016_norm})
+scipy.io.savemat(os.path.join(data_root, 'train_sumy_2016_label.mat'), {'y': train_sumy_2016_label})
+scipy.io.savemat(os.path.join(data_root, 'test_sumX_2016_norm.mat'), {'X': test_sumX_2016_norm})
 scipy.io.savemat(os.path.join(data_root, 'test_sumy_2016_label.mat'), {'y': test_sumy_2016_label})
 
 
