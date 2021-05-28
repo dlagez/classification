@@ -8,7 +8,7 @@ import numpy as np
 from sklearn import preprocessing
 
 # 将**年到**年的数据合并
-# 老师说要竖着归一化
+# 竖着归一化
 def get_sumX(data_root, begin, end):
     sumX = []
     sumy = []
