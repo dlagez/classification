@@ -1,0 +1,14 @@
+数据t32
+
+
+分类方法                   采样方法                    准确率     召回率    auc     f1      mcc     备注
+RandomForestClassifier   RandomUnderSampler         0.705     0.767    0.826   0.687   0.468   下采样
+                         SMOTEENN                   0.758     0.759    0.845   0.758   0.517    联合采样，过采样和下采样
+                         SMOT                       0.696     0.740    0.814   0.681   0.434    过采样 
+
+EasyEnsembleClassifier   内置random under-sampling   0.651     0.718    0.702   0.622   0.364    内置采样方法     
+
+DecisionTree             RandomUnderSampler         0.544     0.586    0.544   0.481   0.124   下采样
+                         SMOTEENN                   0.696     0.702    0.696   0.693   0.399    联合采样，过采样和下采样
+                         SMOT                       0.544     0.586    0.544   0.481   0.124    过采样 
+
