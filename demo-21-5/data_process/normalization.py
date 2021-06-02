@@ -40,7 +40,7 @@ def get_sumX(data_root, begin, end):
     # 返回训练数据、训练标签、测试数据、测试标签
     return trainX_norm, trainy_norm, testX_norm, testy_norm
 
-train_sumX_2016_norm, train_sumy_2016_label, test_sumX_2016_norm, test_sumy_2016_label = get_sumX('/data/file/classification_data/years/', 2012, 2017)
+# train_sumX_2016_norm, train_sumy_2016_label, test_sumX_2016_norm, test_sumy_2016_label = get_sumX('/data/file/classification_data/years/', 2012, 2017)
 # data_root = '/data/file/classification_data/years/sum_2016/'
 # scipy.io.savemat(os.path.join(data_root, 'X_norm_2016.mat'), {'X': sumX_2016})
 
@@ -85,6 +85,8 @@ def get_sumy(data_root, begin, end):
 
 trainlabel = scio.loadmat('/data/file/classification_data/SVM数据/T32/'+'trainlabel.mat')['trainlabel']
 testlabel = scio.loadmat('/data/file/classification_data/SVM数据/T32/' + 'testlabel.mat')['testlabel']
+traindata = scio.loadmat('/data/file/classification_data/SVM数据/T32/' + 'traindata.mat')['x_train']
+testdata = scio.loadmat('/data/file/classification_data/SVM数据/T32/' + 'testdata.mat')['x_test']
 
 
 t32tedata = scio.loadmat('/data/file/classification_data/SVM数据/new_t32/'+'T32TEdata.mat')['testData']
@@ -92,3 +94,4 @@ t32tedata.shape
 
 
 testlabel.shape
+
