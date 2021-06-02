@@ -41,14 +41,14 @@ def get_sumX(data_root, begin, end):
     return trainX_norm, trainy_norm, testX_norm, testy_norm
 
 train_sumX_2016_norm, train_sumy_2016_label, test_sumX_2016_norm, test_sumy_2016_label = get_sumX('/data/file/classification_data/years/', 2012, 2017)
-data_root = '/data/file/classification_data/years/sum_2016/'
+# data_root = '/data/file/classification_data/years/sum_2016/'
 # scipy.io.savemat(os.path.join(data_root, 'X_norm_2016.mat'), {'X': sumX_2016})
 
 # 存储归一化的数据
-scipy.io.savemat(os.path.join(data_root, 'train_sumX_2016_norm.mat'), {'X': train_sumX_2016_norm})
-scipy.io.savemat(os.path.join(data_root, 'train_sumy_2016_label.mat'), {'y': train_sumy_2016_label})
-scipy.io.savemat(os.path.join(data_root, 'test_sumX_2016_norm.mat'), {'X': test_sumX_2016_norm})
-scipy.io.savemat(os.path.join(data_root, 'test_sumy_2016_label.mat'), {'y': test_sumy_2016_label})
+# scipy.io.savemat(os.path.join(data_root, 'train_sumX_2016_norm.mat'), {'X': train_sumX_2016_norm})
+# scipy.io.savemat(os.path.join(data_root, 'train_sumy_2016_label.mat'), {'y': train_sumy_2016_label})
+# scipy.io.savemat(os.path.join(data_root, 'test_sumX_2016_norm.mat'), {'X': test_sumX_2016_norm})
+# scipy.io.savemat(os.path.join(data_root, 'test_sumy_2016_label.mat'), {'y': test_sumy_2016_label})
 
 
 
@@ -79,5 +79,16 @@ def get_sumy(data_root, begin, end):
 
 # 读取合并了的数据
 
-data_root = '/data/file/classification_data/years/'
-X_norm = scio.loadmat(os.path.join(data_root, 'sum_2016/X_norm_2016.mat'))
+# data_root = '/data/file/classification_data/years/'
+# X_norm = scio.loadmat(os.path.join(data_root, 'sum_2016/X_norm_2016.mat'))
+
+
+trainlabel = scio.loadmat('/data/file/classification_data/SVM数据/T32/'+'trainlabel.mat')['trainlabel']
+testlabel = scio.loadmat('/data/file/classification_data/SVM数据/T32/' + 'testlabel.mat')['testlabel']
+
+
+t32tedata = scio.loadmat('/data/file/classification_data/SVM数据/new_t32/'+'T32TEdata.mat')['testData']
+t32tedata.shape
+
+
+testlabel.shape
