@@ -10,7 +10,7 @@ SMOTE                       0.6428571428571429
 
 
 
-下采样
+下采样 NuSVC
 EasyEnsembleClassifier      0.7321428571428571
 BalancedBaggingClassifier   0.625
 
