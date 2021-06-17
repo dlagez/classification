@@ -1,0 +1,23 @@
+
+测试数据：               0.8571428571428571
+
+Under-sampling
+NearMiss                0.6964285714285714
+RandomUnderSampler      0.8125
+TomekLinks              0.5714285714285714
+
+Over-sampling
+ADASYN                  0.5625
+SMOTE                   0.8125
+
+
+Ensemble
+EasyEnsembleClassifier  0.7142857142857143
+
+
+Combination
+SMOTEENN                0.6071428571428571
+SMOTETomek              0.5714285714285714
+
+
+
