@@ -1,0 +1,102 @@
+# Author : roczhang
+# date :   2021/5/26
+
+import os
+import scipy
+import scipy.io as scio
+import numpy as np
+from sklearn import preprocessing
+
+# 将**年到**年的数据合并
+# 竖着归一化
+def get_sumX(data_root, begin, end):
+    sumX = []
+    sumy = []
+    length = 0
+    # 读取数据和标签
+    for year in range(begin, end):
+        # data_root = '/data/file/classification_data/years/'
+        # 增加每年的X
+        X = scio.loadmat(os.path.join(data_root+str(year), 'X_drop2.mat'))['X']
+        length = length + X.shape[0]
+        # 增加每年的y
+        sumX.append(X)
+        y = scio.loadmat(os.path.join(data_root+str(year), 'y_drop2.mat'))['y'].reshape(-1, 1)
+        # X_norm = preprocessing.normalize(X, norm='l2')
+        sumy.append(y)
+
+    # 处理数据部分
+    X_test = scio.loadmat(os.path.join(data_root+'T22/', 'T22testData.mat'))['testData']  # 增加测试的X
+    sumX.append(X_test)  # 将测试数据放进数据列表
+    data_X = np.concatenate(sumX, axis=0)  # 将列表中的数据按0轴合并
+    X_norm_all = preprocessing.normalize(data_X, norm='l2', axis=0)  # 训练和测试的样本统一化
+    trainX_norm = X_norm_all[:length]  # 取出训练数据
+    testX_norm = X_norm_all[length:]  # 取出测试数据
+
+    # 处理标签部分
+    testy_norm = scio.loadmat(os.path.join(data_root + 'T22/', 'T22testlabel.mat'))['testlabel']  # 读取测试的y标签
+    # sumy.append(y_test)
+    trainy_norm = np.concatenate(sumy, axis=0)
+    # 返回训练数据、训练标签、测试数据、测试标签
+    return trainX_norm, trainy_norm, testX_norm, testy_norm
+
+
+data_root = '/data/file/classification_data/tmp/years/'
+trainX_norm, trainy_norm, testX_norm, testy_norm = get_sumX(data_root, 2013, 2018)
+
+trainX_norm.shape
+trainy_norm.shape
+testX_norm.shape
+testy_norm.shape
+save_root = "/data/file/classification_data/2021.6.16T22/data"
+# 存储归一化的数据
+scipy.io.savemat(os.path.join(data_root, 'trainX_norm.mat'), {'X': trainX_norm})
+scipy.io.savemat(os.path.join(data_root, 'trainy_norm.mat'), {'y': trainy_norm})
+scipy.io.savemat(os.path.join(data_root, 'testX_norm.mat'), {'X': testX_norm})
+scipy.io.savemat(os.path.join(data_root, 'testy_norm.mat'), {'y': testy_norm})
+
+
+
+
+
+# 将**年到**年的标签合并
+def get_sumy(data_root, begin, end):
+    # sumX = []
+    sumy = []
+    for year in range(begin, end):
+        # data_root = '/data/file/classification_data/years/'
+        # X = scio.loadmat(os.path.join(data_root+str(year), 'X_drop2.mat'))['X']
+
+        y = scio.loadmat(os.path.join(data_root+str(year), 'y_drop2.mat'))['y']
+        # X_norm = preprocessing.normalize(y, norm='l2')
+        y = y.reshape(-1, 1)
+        # sumX.append(X_norm)
+        sumy.append(y)
+
+    data_y = np.concatenate(sumy, axis=0)
+    # data_y = np.concatenate(sumy, axis=0)
+    return data_y
+# sumy_2016 = get_sumy('/data/file/classification_data/years/', 2012, 2017)
+# sumy_2016.shape
+# data_root = '/data/file/classification_data/years/sum_2016/'
+# scipy.io.savemat(os.path.join(data_root, 'X_norm_2016.mat'), {'X': sumX_2016})
+
+
+# 读取合并了的数据
+
+# data_root = '/data/file/classification_data/years/'
+# X_norm = scio.loadmat(os.path.join(data_root, 'sum_2016/X_norm_2016.mat'))
+
+
+trainlabel = scio.loadmat('/data/file/classification_data/SVM数据/T32/'+'trainlabel.mat')['trainlabel']
+testlabel = scio.loadmat('/data/file/classification_data/SVM数据/T32/' + 'testlabel.mat')['testlabel']
+traindata = scio.loadmat('/data/file/classification_data/SVM数据/T32/' + 'traindata.mat')['x_train']
+testdata = scio.loadmat('/data/file/classification_data/SVM数据/T32/' + 'testdata.mat')['x_test']
+
+
+t32tedata = scio.loadmat('/data/file/classification_data/SVM数据/new_t32/'+'T32TEdata.mat')['testData']
+t32tedata.shape
+
+
+testlabel.shape
+

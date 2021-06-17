@@ -3,6 +3,8 @@
 import pandas as pd
 import os
 import numpy as np
+# 这个方法是使用pandas处理数据，但是有数据的格式问题，导致不能使用
+# 这个方法已经弃用。
 # 将一个文件夹中多个xls文件按列合并，返回合并和的数据，DataFrame
 def get_type():
     dict = {}
