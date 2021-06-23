@@ -1,0 +1,17 @@
+
+T22 分类方法nusvc
+
+RandomOverSampler(random_state=42)       0.5982142857142857
+SMOTE(random_state=42)                   0.5714285714285714
+BorderlineSMOTE(random_state=42)         0.625
+ADASYN(random_state=42)                  0.5625
+
+SMOTEENN(random_state=42)                0.6071428571428571
+SMOTETomek(random_state=42)              0.5714285714285714
+
+NearMiss()                               0.6964285714285714
+
+RandomUnderSampler(random_state=42)      0.8125
+
+
+

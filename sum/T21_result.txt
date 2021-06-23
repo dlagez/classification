@@ -1,0 +1,59 @@
+
+T21 分类方法nusvc
+
+RandomOverSampler(random_state=42)       0.71875
+SMOTE(random_state=42)                   0.640625
+BorderlineSMOTE(random_state=42)         0.640625
+ADASYN(random_state=42)                  0.65625
+
+SMOTEENN(random_state=42)                0.703125
+SMOTETomek(random_state=42)              0.640625
+
+NearMiss()                               0.734375
+
+RandomUnderSampler(random_state=42)      0.8125
+
+-----------------开始----------------
+/data/file/classification_data/T21/samplings/RandomOverSampler(random_state=42)
+RandomOverSampler(random_state=42)
+(11380, 448) (11380,)
+0.71875
+-----------------开始----------------
+/data/file/classification_data/T21/samplings/SMOTE(random_state=42)
+SMOTE(random_state=42)
+(11380, 448) (11380,)
+0.640625
+-----------------开始----------------
+/data/file/classification_data/T21/samplings/BorderlineSMOTE(random_state=42)
+BorderlineSMOTE(random_state=42)
+(11380, 448) (11380,)
+0.640625
+-----------------开始----------------
+/data/file/classification_data/T21/samplings/ADASYN(random_state=42)
+ADASYN(random_state=42)
+(11372, 448) (11372,)
+0.65625
+-----------------开始----------------
+/data/file/classification_data/T21/samplings/SMOTEENN(random_state=42)
+SMOTEENN(random_state=42)
+(10644, 448) (10644,)
+0.703125
+-----------------开始----------------
+/data/file/classification_data/T21/samplings/SMOTETomek(random_state=42)
+SMOTETomek(random_state=42)
+(11380, 448) (11380,)
+0.640625
+-----------------开始----------------
+/data/file/classification_data/T21/samplings/NearMiss()
+NearMiss()
+(188, 448) (188,)
+0.734375
+-----------------开始----------------
+/data/file/classification_data/T21/samplings/RandomUnderSampler(random_state=42)
+RandomUnderSampler(random_state=42)
+(188, 448) (188,)
+0.8125
+[-]
+
+
+

@@ -1,0 +1,14 @@
+
+T31 数据有点问题
+RandomOverSampler(random_state=42)       0.625
+SMOTE(random_state=42)                   0.578125
+BorderlineSMOTE(random_state=42)         0.53125
+ADASYN(random_state=42)                  0.578125
+
+SMOTEENN(random_state=42)                0.609375
+SMOTETomek(random_state=42)              0.578125
+
+NearMiss()                               0.515625
+RandomUnderSampler(random_state=42)      0.734375
+
+
