@@ -12,3 +12,5 @@ NearMiss()                               0.515625
 RandomUnderSampler(random_state=42)      0.734375
 
 
+EasyEnsembleClassifier                   0.734375
+BalancedBaggingClassifier                0.671875

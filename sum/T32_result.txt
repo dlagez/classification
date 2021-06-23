@@ -14,4 +14,5 @@ TomekLinks()                             0.5089285714285714
 RandomUnderSampler(random_state=42)      0.75
 
 
-
+EasyEnsembleClassifier                   0.7321428571428571
+BalancedBaggingClassifier                0.625
